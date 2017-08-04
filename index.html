@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
+             鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+        <button @click="reverseMessage">逆转消息</button>
+    </div>
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input type="text" v-model="message">
+    </div>
+    <div id="app-7">
+        <ol>
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+    <div id="app-8">
+        <button v-bind:disabled="isButtonDisabled">button</button>
+        <p>{{number+1}}</p>
+        <p>{{ok?'YES':'NO'}}</p>
+        <p>{{message.split('').reverse().join('')}}</p>
+        <p v-bind:id="'list-'+id">list-id</p>
+        <p :id="'list-'+id">list-id</p>
+        <p>{{message|capitalize(true)}}</p>
+        <p>{{message|capitalize(false)|reverseMessage}}</p>
+    </div>
+    <div id="app-9">
+        <p>Original message:'{{message}}'</p>
+        <p>Computed reversed message:'{{reversedMessage}}'</p>
+    </div>
+    <div id="app-10">
+        <p>{{firstName}}</p>
+        <p>{{lastName}}</p>
+        <p>{{fullName}}</p>
+    </div>
+    <div id="app-11">
+        <p>
+            Ask a yes/no question:
+            <input v-model="question">
+        </p>
+        <p>{{answer}}</p>
+    </div>
+    <div id="app-12">
+        <div class="static" v-bind:class="{active:isActive,'text-danger':hasError}">haha</div>
+        <div v-bind:class="classObject1"></div>
+        <div v-bind:class="classObject2"></div>
+        <div v-bind:class="[activeClass,errorClass]"></div>
+        <div v-bind:class="[isActive?activeClass:'',errorClass]"></div>
+        <div v-bind:class="[{active:isActive},errorClass]"></div>
+    </div>
+    <div id="app-13">
+        <div :style="{color:activeColor,fontSize:fontSize+'px'}">11</div>
+        <div :style="styleObject">22</div>
+        <div :style="[baseStyles,overridingStyles]">33</div>
+        <div :style="{display:['-webkit-box','-ms-flexbox','flex']}">33</div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
