@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+</head>
+<body>
+<div id="app-1">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+
+    <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+
+    <div v-if="Math.random() > 0.5">
+        Now you see me.
+    </div>
+    <div v-else>
+        Now you don't.
+    </div>
+
+    <div v-if="type === 'A'">A</div>
+    <div v-else-if="type === 'B'">A</div>
+    <div v-else-if="type === 'C'">A</div>
+    <div v-else>Not A/B/C</div>
+
+    <template v-if="loginType === 'username'">
+        <label for="">Username</label>
+        <input type="text" placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label for="">Email</label>
+        <input type="text" placeholder="Enter your email address">
+    </template>
+    <button @click="toggle">Toggle ligin type</button>
+
+    <template v-if="loginType === 'username'">
+        <label for="">Username</label>
+        <input type="text" placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label for="">Email</label>
+        <input type="text" placeholder="Enter your email address" key="email-input">
+    </template>
+    <button @click="toggle">Toggle ligin type</button>
+
+    <div v-show="isShow">
+        v-show
+    </div>
+</div>
+<ul id="app-2">
+    <li v-for="item in items">
+        {{item.message}}
+    </li>
+    <li v-for="(item,index) in items">
+        {{parentMessage}} - {{index}} - {{item.message}}
+    </li>
+    <template v-for="item in items">
+        <li>{{item.message}}</li>
+        <li></li>
+    </template>
+    <li v-for="value in object">
+        {{value}}
+    </li>
+    <li v-for="(value,key) in object">
+        {{key}} : {{value}}
+    </li>
+    <li v-for="(value,key,index) in object">
+        {{index}} . {{key}} : {{value}}
+     </li>
+    <span v-for="n in 10">{{n}}</span>
+    <li v-for="todo in todos" v-if="!todo.isComplete">{{todo}}</li>
+</ul>
+<div id="app-3">
+    <button @click="counter += 1">增加1</button>
+    <p>这个按钮被点击了{{counter}}次</p>
+    <button @click="greet">Greet</button>
+    <button @click="say('hi')">say hi</button>
+    <button @click="warn('From cannot be submitted yet.',$event)">Submit</button>
+</div>
+<a href="" @click.stop="doThis"></a>
+<form action="" @submit.prevent="onSubmit"></form>
+<a href="" @click.stop.prevent="doThat"></a>
+<form action="" @submit.prevent></form>
+<div @click.capture="doThis">...</div>
+<div @click.self="doThat">...</div>
+<input type="text" @keyup.13="submit">
+<input type="text" @keyup.enter="submit">
+<input type="text" @keyup.alt.67="clear">
+<div @click.ctrl="doSomething">Do something</div>
+<script src="vue.js"></script>
+<script src="app2.js"></script>
+</body>
+</html>
