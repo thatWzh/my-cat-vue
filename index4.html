@@ -14,6 +14,31 @@
     <simple-counter></simple-counter>
     <simple-counter></simple-counter>
 </div>
+<div id="app-3">
+    <child my-message="Hello!"></child>
+    <br>
+    <input type="text" v-model="parentMsg">
+    <br>
+    <child :my-message="parentMsg"></child>
+    <br>
+    <comp :some-prop="1"></comp>
+</div>
+<div id="app-4">
+    <input type="text" v-model="parentMsg">
+    <br>
+    <child1 :my-message="parentMsg"></child1>
+</div>
+
+<div id="app-5">
+    <p>{{total}}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:click.native="doThing"></button-counter>
+</div>
+
+<div id="app-6">
+    <currency-input v-model="price"></currency-input>
+</div>
 <script src="vue.js"></script>
 <script src="app4.js"></script>
 </body>
