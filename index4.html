@@ -38,6 +38,41 @@
 
 <div id="app-6">
     <currency-input v-model="price"></currency-input>
+    <my-checkbox v-model="foo" value="some value"></my-checkbox>
+</div>
+<div id="app-7">
+    <h1>我是父组件的标题</h1>
+    <child-component>
+        <p>这是一些初始内容</p>
+        <p>这是更多的初始内容</p>
+    </child-component>
+    <app-layout>
+        <h1 slot="header">这里可能是一个页面标题</h1>
+        <p>主要内容的一个段落</p>
+        <p>主要内容的另一个一个段落</p>
+        <p slot="footer">这里有一些联系信息</p>
+    </app-layout>
+</div>
+<div id="app-8">
+    <child1>
+        <template scope="props">
+            <span>hello from parent</span>
+            <span>{{props.text}}</span>
+        </template>
+    </child1>
+    <my-awesome-list v-bind:items="items">
+        <template scope="props">
+            <li>{{props.text}}</li>
+        </template>
+    </my-awesome-list>
+</div>
+<div id="app-9">
+    <component v-bind:is="currentView"></component>
+</div>
+<div id="app-10">
+    <keep-alive>
+        <component v-bind:is="currentView"></component>
+    </keep-alive>
 </div>
 <script src="vue.js"></script>
 <script src="app4.js"></script>

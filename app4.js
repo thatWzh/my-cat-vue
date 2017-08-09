@@ -111,7 +111,108 @@ Vue.component('currency-input',{
         }
     }
 })
+Vue.component('my-checkbox',{
+    model:{
+        prop:'checked',
+        event:'change'
+    },
+    props:{
+        checked:Boolean,
+        value:String
+    },
+    template:'<input type="checkbox" :checked="checked" :value="value">'
+})
+var app6 = new Vue({
+    el:'#app-6',
+    data:{
+        price:0.00,
+        foo:true
+    }
+})
 
-new Vue({
-    el:'#app-6'
+Vue.component('child-component',{
+     template:'\
+     <div>\
+        <h1>我是子组件的标题</h1>\
+        <slot>只有在没有分发的内容时才会显示</slot>\
+     </div>\
+     '
+})
+Vue.component('app-layout',{
+    template:'\
+    <div class="container">\
+        <header>\
+            <slot name="header"></slot>\
+        </header>\
+        <main>\
+            <slot></slot>\
+        </main>\
+        <footer>\
+            <slot name="footer"></slot>\
+        </footer>\
+    </div>'
+})
+
+var app7 = new Vue({
+    el:'#app-7'
+})
+
+Vue.component('child1',{
+    template:'\
+    <div>\
+        <slot text="hello from child"></slot>\
+    </div>'
+})
+Vue.component('my-awesome-list',{
+    template:'\
+    <ul>\
+        <slot \
+            v-for="item in items"\
+            v-bind:text="item.text"\
+        ></slot>\
+    </ul>',
+    data:function () {
+        return{
+            items:[
+                {text:'li-1'},
+                {text:'li-2'},
+                {text:'li-3'},
+                {text:'li-4'}
+            ]
+        }
+    }
+})
+var app8 = new Vue({
+    el:'#app-8',
+    data:{
+        items:[]
+    }
+})
+
+var app9 = new Vue({
+    el:'#app-9',
+    data:{
+        currentView:'home'
+    },
+    components:{
+        home:{template:'<div><p>home</p><input type="text"></div>'},
+        posts:{template:'<p>posts</p>'},
+        archive:{template:'<p>aechive</p>'}
+    }
+})
+var Home = {
+    template:'<div><p>home</p><input type="text"></div>'
+}
+var Posts = {
+    template:'<p>posts</p>'
+}
+var Archive = {
+    template:'<p>archive</p>'
+}
+
+var app10 = new Vue({
+    el:'#app-10',
+    data:{
+        currentView:Home
+    }
 })
